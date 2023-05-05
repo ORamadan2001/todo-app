@@ -6,7 +6,7 @@ POST http://localhost:3001/todo/new
 Content-Type: application/json
 
 {
-    "text": "Learn how to use JavaScript!"
+    "text": "Learn how to use CSS"
 }
 
 ###
@@ -15,7 +15,7 @@ POST http://localhost:3001/todo/new
 Content-Type: application/json
 
 {
-    "text": "Learn how to use Mongoose!"
+    "text": "Learn how to use Mongoose"
 }
 
 
