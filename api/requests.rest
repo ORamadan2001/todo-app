@@ -1,0 +1,28 @@
+GET http://localhost:3001/todos
+
+###
+
+POST http://localhost:3001/todo/new
+Content-Type: application/json
+
+{
+    "text": "Learn how to use JavaScript!"
+}
+
+###
+
+POST http://localhost:3001/todo/new
+Content-Type: application/json
+
+{
+    "text": "Learn how to use Mongoose!"
+}
+
+
+###
+
+DELETE http://localhost:3001/todo/delete/645475d92e13050701f69bf7
+
+
+###
+PUT http://localhost:3001/todo/complete/64547604388fc4909533b476
