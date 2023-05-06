@@ -6,7 +6,7 @@
   --dark: #080808;
   --dark-alt: #202B3E;
 
-  --peach: #FCEDDA;
+  --peach: #e6d6c3;
   --burnt-orange: #EE4E34;
 }
 
@@ -64,12 +64,12 @@ h4 {
   height: 20px;
   margin-right: 16px;
   border-radius: 999px;
-  background-color: var(--peach);
+  background-color: red;
   transition: 0.25s;
 }
 
 .todo.complete .checkbox {
-  background-color: var(--burnt-orange);
+  background-color: green;
 }
 
 .todo .task {
@@ -89,7 +89,7 @@ h4 {
   width: 24px;
   height: 24px;
   color: var(--dark);
-  background-color: var(--burnt-orange);
+  background-color: var(--peach);
   border-radius: 20%;
 
   display: flex;
@@ -125,4 +125,62 @@ h4 {
 
 .addPopup:hover {
   opacity: 1;
+}
+
+.popup {
+  position: relative;
+  background-color: var(--dark);
+  padding: 16px;
+  border-radius: 16px;
+  opacity: 0.85;
+  display: flex;
+}
+
+.popup h3 {
+  font-weight: 1;
+  margin-bottom: 8px;
+}
+
+.popup .closePopup {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+
+  width: 24px;
+  height: 24px;
+  color: var(--dark);
+  background-color: var(--peach);
+  border-radius: 20%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+}
+
+.content {
+  width: 100%;
+}
+
+.add-todo-input {
+  width: 97%;
+}
+
+input[type = text] {
+  padding: 10px;
+
+  border: none;
+  outline: none;
+
+  border-bottom: 1px solid black;
+  border-radius: 10px;
+
+  background-color: #e2e2e2;
+  box-shadow: 0px 2px 24px rgba(0, 0, 0, 0.2);
+
+  font-size: 16px;
+  
+  text-indent: 8px;
 }

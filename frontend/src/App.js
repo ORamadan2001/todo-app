@@ -37,11 +37,29 @@ function App() {
       }
       
       const deleteTodo = async id => {
+
         const data = await fetch(API_BASE + "/todo/delete/" + id, {
             method: "DELETE"
         }).then(res => res.json());
 
         setTodos(todos => todos.filter(todo => todo._id !== data._id));
+
+      }
+
+      const addTodo = async () => {
+        const data = await fetch(API_BASE + "/todo/new", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                text: newTodo
+            })
+        }).then(res => res.json());
+
+        setTodos([...todos, data]);
+        setPopupActive(false);
+        setNewTodo("");
 
       }
 
@@ -60,7 +78,12 @@ function App() {
 
                         <div className = "task"> {todo.text} </div>
 
-                        <div className = "delete" onClick={() => deleteTodo(todo._id)}>x</div>
+                        <div className = "delete" onClick={
+                            (e) => {
+                                e.stopPropagation();
+                                deleteTodo(todo._id)
+                            }
+                        }>x</div>
                     </div>
 
                 ))}
@@ -70,7 +93,26 @@ function App() {
 
             <div className = "addPopup" onClick={() => setPopupActive(true)}> + </div>
 
+            {popupActive ? (
+                <div className='popup'>
+                    <div className = 'closePopup' onClick={() => setPopupActive(false)}> x </div>
+                    <div className = 'content'>
+                        <input type='text' 
+                            className ="add-todo-input" 
+                            placeholder='Task'  
+                            onChange={e => setNewTodo(e.target.value)}
+                            value = {newTodo}
+                            onKeyDown={(event) => {
+                                if (event.key == 'Enter') {
+                                    addTodo();
+                                }
+                        }}/>
+                    </div>
+                </div>
+            ) : ''}
+
 		</div>
+        
 	);
 }
 
