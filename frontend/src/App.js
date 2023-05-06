@@ -11,6 +11,18 @@ function App() {
         GetTodos();
     }, [])
 
+    const sortedTodos = [...todos].sort((a, b) => {
+        if (a.complete === b.complete) {
+            return 0;
+        }
+
+        if (a.complete) {
+            return 1;
+        }
+
+        return -1;
+    });
+
     const GetTodos = () => {
         fetch(API_BASE + "/todos")
         .then(res => res.json())
@@ -69,7 +81,7 @@ function App() {
             <h4>Tasks</h4>
             
             <div className = "todos">
-                {todos.map(todo => (
+                {sortedTodos.map(todo => (
 
                     <div className = {
                         "todo " + (todo.complete ? "complete" : "")
